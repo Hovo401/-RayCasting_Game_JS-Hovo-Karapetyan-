@@ -1,9 +1,9 @@
-export default class KeyboardManager { // singelton
+export default class KeyManager { // singelton
     constructor() {
-        if(KeyboardManager.ex){
-            return Scene.ex;
+        if(KeyManager.ex){
+            return KeyManager.ex;
         }
-        KeyboardManager.ex = this;
+        KeyManager.ex = this;
         this.keys = {}; // Объект для хранения состояния клавиш
         this.setupListeners();
     }

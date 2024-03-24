@@ -3,15 +3,15 @@ import MS from './scene/MS.js';
 import Time from './utils/Time.js';
 
 
-export default class Game { // singleton
+export default class GameLoop { // singleton
     constructor() {
-        if(Game.ex){
-            return Game.ex;
+        if(GameLoop.ex){
+            return GameLoop.ex;
         }
-        Game.ex = this;
-
-        this.isPlay = true;
+        GameLoop.ex = this;
         
+        this.isPlay = true;
+
         this.render = new Render({ player: this.player });
     }
 

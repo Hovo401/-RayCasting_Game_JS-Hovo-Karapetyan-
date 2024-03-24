@@ -11,12 +11,12 @@ export default class GameDynamicObject extends GameObject{
 
     start (){
         this.componentsNames.forEach(e=>{
-            components[e].start();
+            this.components[e].start();
         });
     }
     upDate (){
         this.componentsNames.forEach(e=>{
-            components[e].upDate();
+            this.components[e].upDate();
         });
     }
 

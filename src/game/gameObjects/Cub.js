@@ -7,10 +7,10 @@ export default class Cub extends GameDynamicObject {
         
         this.mash = new Mash({GObj: this,
             mash: [
-                [-1, -1],
-                [1, -1],
-                [1, 1],
-                [-1, 1]
+                [-10, -10],
+                [10, -10],
+                [10, 10],
+                [-10, 10]
             ]
         });
     }

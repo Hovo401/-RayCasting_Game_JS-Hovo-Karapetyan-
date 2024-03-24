@@ -1,16 +1,34 @@
-export default class Scene{
-    constructor(){
-        this.staticObj = [];
-        this.dynamicObj = [];
-    }
-    
-    // Добавление статического объекта в сцену
-    addStaticObject(obj) {
-        this.staticObj.push(obj);
+import Camera from "./Camera.js";
+
+export default class Scene {
+    constructor() {
+        this.staticObj = new Map();
+        this.dynamicObj = new Map();
+        this.subObjs = [this.staticObj, this.dynamicObj];
+        this.camera = new Camera({
+            position: { x: 25, y: 25, z: 0 },
+            rotation: { horizon: 0, vertical: 0 }
+        });
     }
 
-    // Добавление динамического объекта в сцену
-    addDynamicObject(obj) {
-        this.dynamicObj.push(obj);
+    addObject(obj, statice = false) {
+        if(statice){
+            this.staticObj.set(obj.name, obj);
+        }else{
+            
+            this.dynamicObj.set(obj.name, obj);
+        }
+    }
+
+    addObjectArray(objs, statice = false) {
+        if(statice){
+            objs.forEach( obj => {
+                this.staticObj.set(obj.name, obj);
+            });
+        }else{
+            objs.forEach( obj => {
+                this.dynamicObj.set(obj.name, obj);
+            });
+        }
     }
 }

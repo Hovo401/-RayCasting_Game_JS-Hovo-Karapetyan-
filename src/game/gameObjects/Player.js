@@ -1,22 +1,26 @@
-// import {mapArr, staticObj, mash} from '../scene/main.map.js';
-import KeyboardManager from '../components/KeyboardManager.js'
+import Cub from './Cub.js';
+import keyManager from '../utils/KeyManager.js'
 import Physics from '../components/Physics.js';
+import MS from '../scene/MS.js';
 
-export default class Player{
-    constructor({x, y, angle}){
-        this.mass = 80;
-        this.position = { x: x, y: y, z: 0.3 };
-        this.velocity = { x: 0, y: 0, z: 0 };
-        this.yWidth = 5;
-        this.xWidth = 5;
-        this.angle = angle;
-        this.vertAngle = 1;
-        this.keyManager = new KeyboardManager();
+export default class Player extends Cub{
+    constructor(e){
+        e.position = {x:25,y:25,z:20}
+        super(e);
+        
+        this.keyManager = new keyManager();
         this.this_speed = 3;
         this.step_speed = this.mass*6;
         this.run_speed = this.mass*10;
+        this.isRendring = false;
+        MS.scene.camera.position = this.position;
+        MS.scene.camera.rotation = this.rotation;
+        this.physics = new Physics({
+            GObj: this,
+            mass: 10,
+        })
 
-        this.physics = new Physics();
+        this.addComponent(this.physics);
     }
 
     isColisia(x, y){
@@ -35,18 +39,18 @@ export default class Player{
 
     run({x,y,z}){
         if(this.position.z > 1.5 || this.position.z < -0.5){
-            this.position.x = x;
-            this.position.y = y;
+            this.positionX = x;
+            this.positionY = y;
         }
         else if( !this.isColisia(x, y)){
-            this.position.x = x;
-            this.position.y = y;
+            this.positionX = x;
+            this.positionY = y;
         }
-        else if(!this.isColisia(this.position.x, y)){
-            this.position.y = y;
+        else if(!this.isColisia(this.positionX, y)){
+            this.positionY = y;
         }
-        else if(!this.isColisia(x, this.position.y)){
-            this.position.x = x;
+        else if(!this.isColisia(x, this.positionY)){
+            this.positionX = x;
         }
         if(z <= 0.3){
             this.position.z = z;
@@ -56,51 +60,50 @@ export default class Player{
     }
 
 
-    play(){
-
+    upDate_=()=>{
+        // console.log(this.components)
         if(this.position.z > 0.3){
             this.physics.isDown = false;
             this.position.z=0.3;
         }else{
             this.physics.startDown()
         }
-        this.run(this.physics.updatePosition(this, 1));
         
         // Изменяем координаты в зависимости от нажатой клавиши
 
         if (this.keyManager.isDown('KeyW')) {
-            this.physics.impulse.x = this.position.x - this.position.x + Math.cos(this.angle) *this.this_speed;
-            this.physics.impulse.y = this.position.y - this.position.y + Math.sin(this.angle) *this.this_speed;
-            // this.run(this.position.x + Math.cos(this.angle) *this.this_speed, this.position.y + Math.sin(this.angle) *this.this_speed);
+            this.physics.impulse.x =  Math.cos(this.rotationHorizon) *this.this_speed;
+            this.physics.impulse.y =  Math.sin(this.rotationHorizon) *this.this_speed;
+            // this.run(this.positionX + Math.cos(this.rotationHorizon) *this.this_speed, this.positionY + Math.sin(this.rotationHorizon) *this.this_speed);
         } 
         else if (this.keyManager.isDown('KeyS')) {
-            this.physics.impulse.x = -(this.position.x - this.position.x + Math.cos(this.angle) *this.this_speed);
-            this.physics.impulse.y = -(this.position.y - this.position.y + Math.sin(this.angle) *this.this_speed);
-            // this.run(this.position.x + Math.cos(this.angle) *-this.this_speed, this.position.y + Math.sin(this.angle) *-this.this_speed);
+            this.physics.impulse.x = -( Math.cos(this.rotationHorizon) *this.this_speed);
+            this.physics.impulse.y = -( Math.sin(this.rotationHorizon) *this.this_speed);
+            // this.run(this.positionX + Math.cos(this.rotationHorizon) *-this.this_speed, this.positionY + Math.sin(this.rotationHorizon) *-this.this_speed);
         }
         if (this.keyManager.isDown('KeyA')) {
-            this.physics.impulse.x = (this.position.y - this.position.y + Math.sin(this.angle) *this.this_speed); 
-            this.physics.impulse.y = -(this.position.x - this.position.x + Math.cos(this.angle) *this.this_speed);
-            // this.run(this.position.x + Math.sin(this.angle) *this.this_speed, this.position.y + Math.cos(this.angle) *-this.this_speed);
+            this.physics.impulse.x = ( Math.sin(this.rotationHorizon) *this.this_speed); 
+            this.physics.impulse.y = -( Math.cos(this.rotationHorizon) *this.this_speed);
+            // this.run(this.positionX + Math.sin(this.rotationHorizon) *this.this_speed, this.positionY + Math.cos(this.rotationHorizon) *-this.this_speed);
         } 
         else if (this.keyManager.isDown('KeyD')) {
-            this.physics.impulse.x = -(this.position.y - this.position.y + Math.sin(this.angle) *this.this_speed); 
-            this.physics.impulse.y = (this.position.x - this.position.x + Math.cos(this.angle) *this.this_speed);
-            // this.run(this.position.x + Math.sin(this.angle) *-this.this_speed, this.position.y + Math.cos(this.angle) *this.this_speed);
+            this.physics.impulse.x = -( Math.sin(this.rotationHorizon) *this.this_speed); 
+            this.physics.impulse.y = ( Math.cos(this.rotationHorizon) *this.this_speed);
+            // this.run(this.positionX + Math.sin(this.rotationHorizon) *-this.this_speed, this.positionY + Math.cos(this.rotationHorizon) *this.this_speed);
         }
 
         if (this.keyManager.isDown('ArrowLeft')) {
-            this.angle -= 0.1;
+            this.rotationHorizon -= 0.1;
         }
         else if (this.keyManager.isDown('ArrowRight')) {
-            this.angle += 0.1;
+            this.rotationHorizon += 0.1;
         }
 
         if (this.keyManager.isDown('ArrowUp')) {
-            this.vertAngle += 0.2;
+            this.rotationVertical += 0.2;
         }
         else if (this.keyManager.isDown('ArrowDown')) {
-            this.vertAngle -= 0.2;
+            this.rotationVertical -= 0.2;
         }
 
         // if (this.keyManager.isDown('KeyE')) {
@@ -117,11 +120,11 @@ export default class Player{
             }
         }
 
-        if (this.keyManager.isDown('ShiftLeft') || this.keyManager.isDown('ShiftRight')) {
-            this.this_speed = this.run_speed;
-        }else{
-            this.this_speed = this.step_speed;
-        }
+        // if (this.keyManager.isDown('ShiftLeft') || this.keyManager.isDown('ShiftRight')) {
+        //     this.this_speed = this.run_speed;
+        // }else{
+        //     this.this_speed = this.step_speed;
+        // }
 
     }
 
