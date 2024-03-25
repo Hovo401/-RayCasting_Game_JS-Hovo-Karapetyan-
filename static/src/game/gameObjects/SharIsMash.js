@@ -6,7 +6,7 @@ export default class SharIsMash extends GameDynamicObject {
         super(e);
         this.name = 'share'
         this.mash = new Mash({GObj: this,
-            mash:this.generateCircleCoordinates(0, 0, 10, 20),
+            mash:this.generateCircleCoordinates(0, 0, 3, 20),
             texturingMetod:'full'
         });
     }

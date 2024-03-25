@@ -13,7 +13,7 @@ class App {
       {key: 'wall2', src: './img/texture/wall2.png'},
       {key: 'Wall_1x1_3', src: './img/texture/Wall_1x1_3.png'},
       {key: 'Wall_1x1_4', src: './img/texture/Wall_1x1_4.png'},
-      {key: 'Wall_1x1_5', src: './img/texture/Wall_1x1_5.png'},
+      {key: 'Wall_1x1_5', src: './img/texture/person_j_1.png'},
     ]);
 
     // GAPI.SceneMeneger.scene.addObject(
