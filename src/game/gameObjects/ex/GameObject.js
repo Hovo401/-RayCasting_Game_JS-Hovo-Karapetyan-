@@ -10,7 +10,12 @@ export default class GameObject {
 
         this.isRendring = true;
         this.texture = e?.texture ?? null; // img
-    }
+        this.rindringMetaData = {
+            quantityRaysNum: 0,
+            mashQuantityRaysNum:[]
+            }
+        };
+    
     get position (){
         return this._position;
     }

@@ -1,5 +1,7 @@
 import Component from "./ex/Component.js";
-const GRAVITY_CONSTANT = 9.81/15;
+
+const GRAVITY_CONSTANT = 9.81/4;
+
 
 export default class Physics extends Component{
     constructor(e) {
@@ -37,7 +39,7 @@ export default class Physics extends Component{
 
         outxyz.x += this.impulse.x/ this.mass * this.GObj.Time.deltaTime*1000;
         outxyz.y += this.impulse.y/ this.mass * this.GObj.Time.deltaTime*1000;
-        outxyz.z += this.impulse.z/ this.mass * this.GObj.Time.deltaTime+1000;
+        outxyz.z += this.impulse.z/ this.mass * this.GObj.Time.deltaTime*1000;
 
         // Уменьшаем импульс
         this.impulse.x *= this.damping;

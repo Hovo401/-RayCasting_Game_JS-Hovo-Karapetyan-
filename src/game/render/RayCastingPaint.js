@@ -6,7 +6,12 @@ export default class RayCastingPaint extends RayCatsting{
         super(e);
     }
     PaintUpDate(){
-        var y_start = window.innerHeight  / 1.5 ;
+        var y_start = this.canvas.height / 2 * this.c.rotation.vertical ;
+
+        this.ctx.fillStyle = "#4990BB";
+        this.ctx.fillRect(0 , 0, this.canvas.width,   y_start  );
+        this.ctx.fillStyle = "#7F6548";
+        this.ctx.fillRect(0 , y_start, this.canvas.width, this.canvas.width);
 
         const delta = this.canvas.width / this.c.NUM_RAYS;
         for (let i = 0; i < this.rayMatrix.length; ++i){
@@ -24,16 +29,23 @@ export default class RayCastingPaint extends RayCatsting{
                 
                 var proekcia = ray.distance;
                 proekcia *= Math.cos(this.c.rotation.horizon - ray.rayDeltaAngle );
-                proekcia = (this.c.d  / proekcia * 80);
+                proekcia = (this.c.d  / proekcia * 40 * (this.canvas.width / this.canvas.height ) * this.canvas.height /this.canvas.width );
+
+                var 
+                    xStart = delta * i ,
+                    yStart = y_start  -  proekcia * this.c.position.z, 
+                    xDelta = delta+1,  
+                    yDelta = proekcia
                 
                 if(ray?.GObj?.texture ){
+                    // console.log( (ray.GObj.rindringMetaData.mashQuantityRaysNum[ray.mashIndex]) )
                     this.ctx.drawImage(ray.GObj.texture, 
-                        ray.GObj.texture.width / ray.texturProcent * 100 , 0 , 5   , ray.GObj.texture.height,
-                        delta * i ,this.canvas.height / 2 *  this.c.rotation.vertical   -  proekcia * this.c.position.z, delta+1,  proekcia,
+                        Math.floor(ray.GObj.texture.width / ray.texturProcent * 100) , 0 , Math.floor( ray.GObj.texture.width / (ray.GObj.rindringMetaData.mashQuantityRaysNum[ray.mashIndex]))   , ray.GObj.texture.height,
+                        Math.floor(xStart) ,Math.floor(yStart), Math.floor(xDelta), Math.floor( yDelta),
                         );
                 }  
                 else{
-                    this.ctx.fillRect(delta * i , this.canvas.height / 2 *  this.c.rotation.vertical   -  proekcia * this.c.position.z, delta+1,  proekcia  );
+                    this.ctx.fillRect(xStart , yStart, xDelta,  yDelta  );
                 }
 
             // }

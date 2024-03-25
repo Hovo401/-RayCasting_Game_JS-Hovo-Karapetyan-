@@ -17,7 +17,7 @@ export default class UserPlayerControl extends Component{
     upDate(){
         if(this.GObj.position.z > 0.3){
             this.getUseComponent('physics').isDown = false;
-            this.GObj.position.z=0.3;
+            this.GObj.position.z = 0.3;
         }else{
             this.getUseComponent('physics').startDown()
         }
@@ -46,30 +46,36 @@ export default class UserPlayerControl extends Component{
         }
 
         if (this.keyManager.isDown('ArrowLeft')) {
-            this.GObj.rotationHorizon -= 0.1;
+            this.GObj.rotationHorizon -= 3 * this.GObj.Time.deltaTime ;
         }
         else if (this.keyManager.isDown('ArrowRight')) {
-            this.GObj.rotationHorizon += 0.1;
+            this.GObj.rotationHorizon += 3 * this.GObj.Time.deltaTime ;
         }
 
         if (this.keyManager.isDown('ArrowUp')) {
-            this.GObj.rotationVertical += 0.2;
+            var newRotationVertical = this.GObj.rotationVertical + 4 * this.GObj.Time.deltaTime
+            if( 0 < newRotationVertical && newRotationVertical < 2 ){
+                this.GObj.rotationVertical = newRotationVertical;
+            }
         }
         else if (this.keyManager.isDown('ArrowDown')) {
-            this.GObj.rotationVertical -= 0.2;
+            var newRotationVertical = this.GObj.rotationVertical - 4 * this.GObj.Time.deltaTime
+            if( 0 < newRotationVertical && newRotationVertical < 2 ){
+                this.GObj.rotationVertical = newRotationVertical;
+            }
         }
 
-        // if (this.keyManager.isDown('KeyE')) {
-        //     // this.getUseComponent('physics').impulse.z -= 10;
-        //     this.GObj.position.z = -10;
-        // }
-        // else if (this.keyManager.isDown('KeyQ')) {
-        //     // this.getUseComponent('physics').impulse.z += 0.09;
-        // }
+        if (this.keyManager.isDown('KeyE')) {
+            // this.getUseComponent('physics').impulse.z -= 10;
+            // this.GObj.position.z += -0.1;
+        }
+        else if (this.keyManager.isDown('KeyQ')) {
+            // this.getUseComponent('physics').impulse.z += 0.09;
+        }
 
         if (this.keyManager.isDown('Space')) {
             if(this.GObj.position.z >= 0.2){
-                this.getUseComponent('physics').impulse.z = -10;
+                this.getUseComponent('physics').impulse.z = -1;
             }
         }
 
