@@ -5,5 +5,6 @@ export default class Ray {
         this.cord = e?.cord ?? [];
         this.distance = e?.distance ?? Infinity;
         this.rayDeltaAngle = e?.rayDeltaAngle ?? 0;
+        this.texturProcent = e?.texturProcent ?? 0;
     }
 }

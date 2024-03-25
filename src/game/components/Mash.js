@@ -7,7 +7,9 @@ export default class Mash extends Component{
         this.mash = e.mash;
         this.RMashPos = structuredClone(e.mash);
         this.RMashPosCal();
-        this.isRendring = e?.isRendring ? e.isRendring :true;
+        this.isRendring = e?.isRendring ?? true;
+        this.texturingMetod = e?.texturingMetod ?? 'segment';
+        this.metodsList = ['segment'];
     }
     RMashPosCal(){
         if(!this.mash || !Array.isArray(this.mash) || this.mash.length === 0) return;

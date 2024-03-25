@@ -6,6 +6,6 @@ export default class Rotating extends Component{
         this.name = 'rotating';
     }
     upDate(){
-        this.GObj.rotationHorizon +=  this.GObj.Time.deltaTime * Math.PI ;
+        // this.GObj.rotationHorizon +=  this.GObj.Time.deltaTime * Math.PI / 10 ;
     }
 }

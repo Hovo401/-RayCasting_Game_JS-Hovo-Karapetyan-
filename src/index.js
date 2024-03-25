@@ -9,7 +9,6 @@ class App {
 
         
         new GAPI.utils.DownladMeneger().load([
-            {key: 'zemlya', src:'./img/pol.jpg'},
             {key: 'crown', src:'./img/texture/crown.jpg'},
             {key: 'start1_gray_fon', src:'./img/texture/start1_gray_fon.png'},
             {key: 'tower_gray', src:'./img/texture/tower_gray.png'},
@@ -20,8 +19,9 @@ class App {
         GAPI.SceneMeneger.scene.addObject(
             new GAPI.GObjs.Cub({
                 position: { x: 70, y: 70, z: 5 },
-                rotation: { horizon: 1, vertical: 1 },
-                name:'d'
+                rotation: { horizon: 0.0001, vertical: 1 },
+                name:'d',
+                texture: GAPI.SceneMeneger.images.crown,
             }).addComponent(new GAPI.comps.Rotating())
         );
 

@@ -9,13 +9,13 @@ export default class Player extends Cub {
         super(e);
         this.name = 'player';
         
-        this.isRendring = false;
+        this.mash.isRendring = false;
 
         SceneMeneger.scene.camera.position = this.position;
         SceneMeneger.scene.camera.rotation = this.rotation;
 
         this.addComponent(
-            new Physics({ mass: 30 }), 'physics'
+            new Physics({ mass: 80 }), 'physics'
         );
         this.addComponent(
             new UserPlayerControl()
