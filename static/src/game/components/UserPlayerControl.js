@@ -9,7 +9,7 @@ export default class UserPlayerControl extends Component{
 
         this.this_speed = 3;
         this.step_speed = 3;
-        this.run_speed = 6;
+        this.run_speed = 10;
     }
     start(){
         if(!this.getUseComponent('physics')) throw new Error('useComponent (physics:Physics) = undefined');

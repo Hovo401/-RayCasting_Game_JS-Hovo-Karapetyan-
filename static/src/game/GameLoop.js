@@ -24,16 +24,18 @@ export default class GameLoop { // singleton
         this.DownladMeneger.onProgress = (imagesLoaded, totalImages)=>{
             // console.log(imagesLoaded, totalImages);
         }
-
+        
         this.DownladMeneger.onComplete = ()=>{
             this.upDate();
         }
+        
     }
 
     upDate() {
         requestAnimationFrame(this.upDate.bind(this));
         // setTimeout(this.upDate.bind(this), 0);
         if (!this.isPlay) return;
+
 
         SceneMeneger.scene.dynamicObj.forEach((e)=>{
             e.upDate();

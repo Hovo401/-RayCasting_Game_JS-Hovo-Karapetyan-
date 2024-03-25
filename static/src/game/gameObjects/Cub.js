@@ -11,7 +11,7 @@ export default class Cub extends GameDynamicObject {
                 [10, -10],
                 [10, 10],
                 [-10, 10]
-            ]
+            ],
         });
     }
 }

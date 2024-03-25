@@ -1,5 +1,5 @@
 
-import RayCastingPaint from './rayCastingPaint.js';
+import RayCastingPaint from './RayCastingPaint.js';
 import Time from '../utils/Time.js';
 import SceneMeneger from '../scene/SceneMeneger.js';
 

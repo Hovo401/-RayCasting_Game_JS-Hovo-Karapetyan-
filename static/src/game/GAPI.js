@@ -7,6 +7,7 @@ import GameObject from './gameObjects/ex/GameObject.js';
 import GameDynamicObject from './gameObjects/ex/GameDynamicObject.js';
 import Player from './gameObjects/Player.js';
 import Cub from './gameObjects/Cub.js';
+import SharIsMash from './gameObjects/SharIsMash.js';
 
 // components
 import Physics from './components/Physics.js';
@@ -27,6 +28,7 @@ export default class GAPI{
         'GDObj': GameDynamicObject,
         'Cub': Cub,
         'Player': Player,
+        'SharIsMash': SharIsMash,
     }
     static comps = {
         'Physics': Physics,

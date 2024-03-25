@@ -51,7 +51,7 @@ export default class RayCatsting extends Canvas {
                             GObj.rindringMetaData.quantityRaysNum += 1;
                             if (!GObj.rindringMetaData.mashQuantityRaysNum[j]) GObj.rindringMetaData.mashQuantityRaysNum[j] = 0;
                             GObj.rindringMetaData.mashQuantityRaysNum[j] +=  1;
-                            texturProcent = distancePoints(rMash[j - 1], rMash[j]) / distancePoints(rMash[j], cord) * 100;
+                            texturProcent = distancePoints(rMash[j - 1], rMash[j]) / distancePoints(rMash[j], cord) ;
                             this.rayMatrix[i].push(new Ray({ GObj, texturProcent, mashIndex: j, cord, distance: this.distance(cord, [this.c.position.x, this.c.position.y]), rayDeltaAngle: angle }))
                         }
                     }
@@ -60,7 +60,7 @@ export default class RayCatsting extends Canvas {
                         if (!GObj.rindringMetaData.mashQuantityRaysNum[0]) GObj.rindringMetaData.mashQuantityRaysNum[0] = 0;
                             GObj.rindringMetaData.mashQuantityRaysNum[0] +=  1;
                         GObj.rindringMetaData.quantityRaysNum += 1;
-                        texturProcent = distancePoints(rMash[0], rMash[rMash.length - 1]) / distancePoints(rMash[0], cord) * 100;
+                        texturProcent = distancePoints(rMash[0], rMash[rMash.length - 1]) / distancePoints(rMash[0], cord);
                         this.rayMatrix[i].push(new Ray({ GObj, texturProcent, mashIndex: 0, cord, distance: this.distance(cord, [this.c.position.x, this.c.position.y]), rayDeltaAngle: angle }))
                     }
                     angle += this.c.DELTA_ANGLE;
