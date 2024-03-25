@@ -11,6 +11,10 @@ export default class Scene {
         });
     }
 
+    getDynamicObjByName(name){
+        return this.dynamicObj.get(name);
+    }
+
     addObject(obj, statice = false) {
         if(statice){
             this.staticObj.set(obj.name, obj);
