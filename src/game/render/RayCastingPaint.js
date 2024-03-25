@@ -18,7 +18,7 @@ export default class RayCastingPaint extends RayCatsting{
             
             var maxgim = 1;
             var  j = 0;
-            // for(let j = this.rayMatrix[i].length -1; j >= 0 ; j--){
+            for(let j = this.rayMatrix[i].length -1; j >= 0 ; j--){
             // for(let j =  0; j < this.rayMatrix[i].length; j++){
                 var ray = this.rayMatrix[i][j]
                 // !GObj.mash?.texturingMetod !== 'segment'
@@ -48,7 +48,7 @@ export default class RayCastingPaint extends RayCatsting{
                     this.ctx.fillRect(xStart , yStart, xDelta,  yDelta  );
                 }
 
-            // }
+            }
 
         }
     }
