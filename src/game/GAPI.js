@@ -1,4 +1,4 @@
-import MS from './scene/MS.js';
+import SceneMeneger from './scene/SceneMeneger.js';
 import Scene from './scene/Scene.js';
 import GameLoop from './GameLoop.js';
 
@@ -16,11 +16,12 @@ import Rotating from './components/rotating.js';
 import Time from './utils/Time.js';
 import KeyManager from './utils/KeyManager.js';
 import MapCreator from './utils/MapCreator.js';
+import DownladMeneger from './utils/DownladMeneger.js';
 
 export default class GAPI{
     static GameLoop = GameLoop;
     static Scene = Scene;
-    static MS = MS;
+    static SceneMeneger = SceneMeneger;
     static GObjs = {
         'GObj': GameObject,
         'GDObj': GameDynamicObject,
@@ -35,5 +36,6 @@ export default class GAPI{
         'Time': Time,
         'KeyManager': KeyManager,
         'MapCreator': MapCreator,
+        'DownladMeneger': DownladMeneger,
     }
 }

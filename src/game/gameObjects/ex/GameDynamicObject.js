@@ -5,31 +5,36 @@ export default class GameDynamicObject extends GameObject{
     constructor(e){
         super(e);
         this.Time = Time;
-        this.components = {};
-        this.componentsNames = [];
+        this.components = new Map();
     }
 
     start (){
-        this.componentsNames.forEach(e=>{
-            this.components[e].start();
+        this.components.forEach(comp=>{
+            comp.start();
         });
     }
     upDate (){
-        this.componentsNames.forEach(e=>{
-            this.components[e].upDate();
+        this.components.forEach(comp=>{
+            comp.upDate();
         });
     }
 
-    addComponent(component) {
-        if (!this.components[component.name]) {
-            if (component.start && typeof component.start === 'function') {
-                this.components[component.name] = component;
-                this.componentsNames.push(component.name);
-            } else {
-                console.error(`Component ${component.name} doesn't have a valid start method.`);
-            }
+    getComponent(key){
+        return this.components.get(key);
+    }
+
+    deleteComponent(key){
+        this.components.delete(key);
+    }
+
+    addComponent(component, name) {
+        component.GObj = this;
+        name = name ?? component.name;
+        if (!this.components.has(name)) {
+            this.components.set(name, component);
         } else {
-            console.error(`Component with name ${component.name} already exists.`);
+            console.error(`Component with name ${name} already exists.`);
         }
+        return this;
     }
 }

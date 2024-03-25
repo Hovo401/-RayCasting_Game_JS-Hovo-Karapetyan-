@@ -1,10 +1,10 @@
-import Component from "./Component.js";
+import Component from "./ex/Component.js";
 const GRAVITY_CONSTANT = 9.81/15;
 
 export default class Physics extends Component{
     constructor(e) {
         super(e);
-        this.name = 'Physics'
+        this.name = 'physics'
         this.mass = e?.mass ?? 10;
         this.GRAVITY_DIRECTION = { x: 0, y: 0, z: + 1 }; // Направление гравитации
         this.impulse = { x: 0, y: 0, z: 0 }; // Импульс
@@ -45,7 +45,6 @@ export default class Physics extends Component{
         this.impulse.z *= this.damping;
         
         this.GObj.position = outxyz;
-        this.GObj.upDate_()
     }    
 
     startDown(){

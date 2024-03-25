@@ -1,12 +1,13 @@
 import Canvas from './CanvasEx.js';
-import MS from '../scene/MS.js';
+import SceneMeneger from '../scene/SceneMeneger.js';
 import { areCrossing } from './areCrossing.js';
+import Ray from './Ray.js';
 
 export default class RayCatsting extends Canvas {
     constructor() {
         super();
-        this.c = MS.scene.camera;
-        this.rays = [];
+        this.c = SceneMeneger.scene.camera;
+        this.rayMatrix = [];
     }
     distance(a, b) {
         var dx = b[0] - a[0];
@@ -14,7 +15,7 @@ export default class RayCatsting extends Canvas {
         return Math.sqrt(dx * dx + dy * dy);
     }
     RayCatsting() {
-        this.rays = [];
+        this.rayMatrix = [];
         var angle = this.c.rotation.horizon - this.c.HALF_FOV;
         for (var i = 0; i < this.c.NUM_RAYS; i++) {
             var xy = 
@@ -22,7 +23,7 @@ export default class RayCatsting extends Canvas {
              this.c.position.y + this.c.MAX_DEPT * Math.sin(angle)]
             
 
-            MS.scene.subObjs.forEach(map => {
+            SceneMeneger.scene.subObjs.forEach(map => {
                 map.forEach(GObj => {
                     if (!GObj.isRendring) return;
 
@@ -31,26 +32,26 @@ export default class RayCatsting extends Canvas {
                     for (let j = 1; j < GObj.mash.RMashPos.length; j++) {
                         var cord = areCrossing([this.c.position.x, this.c.position.y], xy, rMash[j - 1], rMash[j])
                         if (cord !== null) {
-                            if (!this.rays[i]) {
-                                this.rays[i] = [];
+                            if (!this.rayMatrix[i]) {
+                                this.rayMatrix[i] = [];
                             }
-                            this.rays[i].push({ GObj, mashIndex: j, cord,distance: this.distance(cord, [this.c.position.x, this.c.position.y])})
+                            this.rayMatrix[i].push(new Ray({ GObj, mashIndex: j, cord,distance: this.distance(cord, [this.c.position.x, this.c.position.y]), rayDeltaAngle: angle}))
                         }
                     }
                     var cord = areCrossing([this.c.position.x, this.c.position.y], xy, rMash[rMash.length-1], rMash[0])
                         if (cord !== null) {
-                            if (!this.rays[i]) {
-                                this.rays[i] = [];
+                            if (!this.rayMatrix[i]) {
+                                this.rayMatrix[i] = [];
                             }
-                            this.rays[i].push({ GObj, mashIndex: 0, cord,distance: this.distance(cord, [this.c.position.x, this.c.position.y])})
+                            this.rayMatrix[i].push(new Ray({ GObj, mashIndex: 0, cord,distance: this.distance(cord, [this.c.position.x, this.c.position.y]), rayDeltaAngle: angle}))
                         }
                 })
             })
             
-            if (!this.rays[i]) {
-                this.rays[i] = [{ GObj: null, mashIndex: NaN, cord: null,distance: Infinity}];
+            if (!this.rayMatrix[i]) {
+                this.rayMatrix[i] = [new Ray()];
             }else{
-                this.rays[i].sort(function(a, b){return a.distance - b.distance});
+                this.rayMatrix[i].sort(function(a, b){return a.distance - b.distance});
             }
 
             angle += this.c.DELTA_ANGLE;

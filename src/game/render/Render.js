@@ -1,7 +1,7 @@
 
 import RayCastingPaint from './rayCastingPaint.js';
 import Time from '../utils/Time.js';
-import MS from '../scene/MS.js';
+import SceneMeneger from '../scene/SceneMeneger.js';
 
 // import { areCrossing } from './areCrossing.js';
 
@@ -23,6 +23,7 @@ export default class Render extends RayCastingPaint {
 
 
         this.RayCatsting();
+        this.PaintUpDate();
         // world map
         this.fps(Time.getFPS());
         this.map_world();
@@ -43,7 +44,7 @@ export default class Render extends RayCastingPaint {
         this.ctx.lineWidth="0";//koxqi laynutyun
 
 
-        MS.scene.subObjs.forEach(map =>{
+        SceneMeneger.scene.subObjs.forEach(map =>{
             map.forEach(GObj=>{
                 
                 var rMash = GObj.mash.RMashPos;
@@ -61,8 +62,8 @@ export default class Render extends RayCastingPaint {
                 
             })
         })
-        // console.log(this.rays)
-        this.rays.forEach(ray=>{
+        // console.log(this.rayMatrix)
+        this.rayMatrix.forEach(ray=>{
         //    var raz =  ray.sort(function(a, b){return a.distance - b.distance});
         //    console.log(raz)
             var ra = ray[0]

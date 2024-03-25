@@ -1,8 +1,9 @@
-import Component from "./Component.js";
+import Component from "./ex/Component.js";
 
 export default class Mash extends Component{
     constructor(e) {
         super(e);
+        this.name = 'mash';
         this.mash = e.mash;
         this.RMashPos = structuredClone(e.mash);
         this.RMashPosCal();

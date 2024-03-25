@@ -1,12 +1,15 @@
 export default class GameObject {
-    constructor(e) {
+    constructor(e = {}) {
         this._position = this.isPoition(e?.position) ? e.position : { x: 0, y: 0, z: 0 };
         this._rotation = this.isRotation(e?.rotation) ? e.rotation : { horizon: 0, vertical: 0 };
         this.mash = null;
         this.collision = null;
         this.children = [];
-        this.name = typeof e?.name === 'string'? e.name: 'GObj';
+        this.name = e?.name ?? 'GObj';
+        this.id = e?.id ?? this.name + Math.random() + '|' + Date.now();
+
         this.isRendring = true;
+        this.texture = e?.texture ?? null; // img
     }
     get position (){
         return this._position;
@@ -65,6 +68,13 @@ export default class GameObject {
     set positionZ(z) {
         this._position.z = z;
         this.mash?.RMashPosCal();
+    }
+
+    start(){
+
+    }
+    upDate(){
+        
     }
 
 

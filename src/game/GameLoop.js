@@ -1,6 +1,7 @@
 import Render from './render/Render.js';
-import MS from './scene/MS.js';
+import SceneMeneger from './scene/SceneMeneger.js';
 import Time from './utils/Time.js';
+import DownladMeneger from './utils/DownladMeneger.js';
 
 
 export default class GameLoop { // singleton
@@ -11,15 +12,22 @@ export default class GameLoop { // singleton
         GameLoop.ex = this;
         
         this.isPlay = true;
-
+        this.DownladMeneger = new DownladMeneger();
         this.render = new Render({ player: this.player });
     }
 
-    start(){
-        MS.scene.dynamicObj.forEach((e)=>{
+    async start(){
+        SceneMeneger.scene.dynamicObj.forEach((e)=>{
             e.start();
         });
-        this.upDate();
+
+        this.DownladMeneger.onProgress = (imagesLoaded, totalImages)=>{
+            // console.log(imagesLoaded, totalImages);
+        }
+
+        this.DownladMeneger.onComplete = ()=>{
+            this.upDate();
+        }
     }
 
     upDate() {
@@ -27,7 +35,7 @@ export default class GameLoop { // singleton
         // setTimeout(this.upDate.bind(this), 0);
         if (!this.isPlay) return;
 
-        MS.scene.dynamicObj.forEach((e)=>{
+        SceneMeneger.scene.dynamicObj.forEach((e)=>{
             e.upDate();
         });
 
