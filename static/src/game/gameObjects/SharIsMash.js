@@ -4,10 +4,10 @@ import Mash from "../components/Mash.js";
 export default class SharIsMash extends GameDynamicObject {
     constructor(e) {
         super(e);
-        this.name = 'share'
+        this.name = this.name = e?.name ?? 'share';
         this.mash = new Mash({GObj: this,
-            mash:this.generateCircleCoordinates(0, 0, 3, 20),
-            texturingMetod:'full'
+            mash:this.generateCircleCoordinates(0, 0, e?.radius ?? 8, e?.MashQuantity ?? 30),
+            texturingMetod: e?.texturingMetod ?? 'full',
         });
     }
     generateCircleCoordinates(centerX, centerY, radius, numPoints) {
@@ -20,7 +20,6 @@ export default class SharIsMash extends GameDynamicObject {
             var y = centerY + radius * Math.sin(angle);
             coordinates.push([x, y]);
         }
-        
         return coordinates;
     }
 }
