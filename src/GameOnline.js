@@ -11,20 +11,20 @@ export default class GameOnline {
 
 
 
-      //   io.on('connection', (socket) => {
-      //     console.log('New client connected');
+        io.on('connection', (socket) => {
+          console.log('New client connected');
         
-      //     socket.on('reqGameUserData', (reqGameUserData) => {
-      //       console.log('Player position:', reqGameUserData);
+          socket.on('reqGameUserData', (reqGameUserData) => {
+            console.log('Player position:', reqGameUserData);
             
-      //       // Broadcasting player data to other clients
-      //       socket.broadcast.emit('reqGameOnlineData', JSON.stringify(Array.from(this.players)));
-      //     });
+            // Broadcasting player data to other clients
+            socket.broadcast.emit('reqGameOnlineData', JSON.stringify(Array.from(this.players)));
+          });
         
-      //     socket.on('disconnect', () => {
-      //       console.log('Client disconnected');
-      //     });
-      // });
+          socket.on('disconnect', () => {
+            console.log('Client disconnected');
+          });
+      });
     }
     getUsersDataById(){
       
