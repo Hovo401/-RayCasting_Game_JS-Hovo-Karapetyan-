@@ -2,7 +2,7 @@ import Render from './render/Render.js';
 import SceneMeneger from './scene/SceneMeneger.js';
 import Time from './utils/Time.js';
 import DownladMeneger from './utils/DownladMeneger.js';
-
+import OnlineSocketController from '../moduls/OnlineSocketController.js';
 
 export default class GameLoop { // singleton
     constructor() {
@@ -11,6 +11,7 @@ export default class GameLoop { // singleton
         }
         GameLoop.ex = this;
         
+        this.onlineSocketController = null;
         this.isPlay = true;
         this.DownladMeneger = new DownladMeneger();
         this.render = new Render({ player: this.player });
@@ -26,8 +27,11 @@ export default class GameLoop { // singleton
         }
         
         this.DownladMeneger.onComplete = ()=>{
+            this.onlineSocketController = new OnlineSocketController();
             this.upDate();
+            
         }
+        
         
     }
 
@@ -35,7 +39,7 @@ export default class GameLoop { // singleton
         requestAnimationFrame(this.upDate.bind(this));
         // setTimeout(this.upDate.bind(this), 0);
         if (!this.isPlay) return;
-
+        this.onlineSocketController.reqGameUserDate();
 
         SceneMeneger.scene.dynamicObj.forEach((e)=>{
             e.upDate();

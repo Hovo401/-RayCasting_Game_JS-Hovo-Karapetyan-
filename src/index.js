@@ -6,12 +6,19 @@ import GameOnline from './GameOnline.js';
 
 
 const app = express();
-// const server = http.createServer(app);
-// const io = new Server(server);
+const server = http.createServer(app);
+const io = new Server(server);
 
 app.use(express.static('static'));
-// const gameOnline = new GameOnline(io);
 
+const gameOnline = new GameOnline(io);
+
+
+app.get('/GetPosition', (req, res)=>{
+  gameOnline.getUsersDataById()
+} )
+
+app.post('/setUserData', gameOnline.setUserData )
 
 
 const port = 3000;

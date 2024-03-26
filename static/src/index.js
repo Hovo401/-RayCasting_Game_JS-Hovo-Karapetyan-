@@ -18,27 +18,17 @@ class App {
     ]);
 
 
-
-    // GAPI.SceneMeneger.scene.addObject(
-    //     new GAPI.GObjs
-    //         .Cub({
-    //           position: {x: 120, y: 120, z: 5},
-    //           rotation: {horizon: 1, vertical: 0},
-    //           name: 'k'
-    //         })
-    //         .addComponent(new GAPI.comps.Rotating()));
-
     GAPI.SceneMeneger.scene.addObject(
       new GAPI.GObjs.SharIsMash({
         position: { x: 150, y: 100, z: 5 },
         rotation: { horizon: 0, vertical: 1 },
-        MashQuantity: 30,
+        MashQuantity: 80,
         radius: 10,
         name:'a1',
         texturingMetod:'segment',
         texture: GAPI.SceneMeneger.images.Wall_1x1_5,
       }).addComponent(new GAPI.comps.Rotating({
-        speedDeg: 4,
+        speedDeg: -4,
       })))
 
     GAPI.SceneMeneger.scene.addObject(
@@ -51,7 +41,7 @@ class App {
         texture: GAPI.SceneMeneger.images.Wall_1x1_5,
         texturingMetod:'full',
       }).addComponent(new GAPI.comps.Rotating({
-        speedDeg: -40,
+        speedDeg: 40,
       })))
 
 
