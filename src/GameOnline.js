@@ -1,4 +1,5 @@
-import PlayerData from "./PlayerData.js";
+import Player from "./Player.js";
+import PlayerData from "./Player.js";
 
 export default class GameOnline {
     constructor(io){
@@ -7,22 +8,33 @@ export default class GameOnline {
         }
         GameOnline.ex = this;
 
-        this.players = new Map();
+        this.players = {};
 
 
 
         io.on('connection', (socket) => {
-          console.log('New client connected');
-        
-          socket.on('reqGameUserData', (reqGameUserData) => {
-            console.log('Player position:', reqGameUserData);
-            
-            // Broadcasting player data to other clients
-            socket.broadcast.emit('reqGameOnlineData', JSON.stringify(Array.from(this.players)));
+          const sesionId = socket.id;
+          console.log('New client connected', sesionId);
+          
+          this.players[sesionId] =  new PlayerData(sesionId, socket);
+          
+          // this.players[sesionId].socket().emit(sesionId, sesionId);
+
+          socket.on('reqGameUserDate', (reqGameUserData) => {
+              const dataPars = JSON.parse(reqGameUserData);
+              
+              this.players[sesionId].data.position = dataPars.position;
+              this.players[sesionId].data.rotation = dataPars.rotation;
+              this.players[sesionId].socket().emit('clientData', JSON.stringify(this.players));
           });
         
           socket.on('disconnect', () => {
-            console.log('Client disconnected');
+            console.log('Client disconnected', sesionId);
+
+            delete this.players[sesionId];
+            for(let key in this.players){
+              this.players[key].socket().emit('userDisconect', sesionId)
+            }
           });
       });
     }

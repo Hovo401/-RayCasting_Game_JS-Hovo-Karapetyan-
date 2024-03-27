@@ -22,6 +22,7 @@ export default class Scene {
             
             this.dynamicObj.set(obj.name, obj);
         }
+        return this.dynamicObj.get(obj.name);
     }
 
     addObjectArray(objs, statice = false) {
@@ -34,5 +35,8 @@ export default class Scene {
                 this.dynamicObj.set(obj.name, obj);
             });
         }
+    }
+    delDynamicObjectByName(name){
+        this.dynamicObj.delete(name)
     }
 }
