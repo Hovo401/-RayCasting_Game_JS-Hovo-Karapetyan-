@@ -21,13 +21,13 @@ export default class GameLoop { // singleton
         SceneMeneger.scene.dynamicObj.forEach((e)=>{
             e.start();
         });
-
+        this.onlineSocketController = new OnlineSocketController();
         this.DownladMeneger.onProgress = (imagesLoaded, totalImages)=>{
             // console.log(imagesLoaded, totalImages);
         }
         
         this.DownladMeneger.onComplete = ()=>{
-            this.onlineSocketController = new OnlineSocketController();
+            
             this.upDate();
             
         }

@@ -23,7 +23,7 @@ export default class OnlineSocketController {
                 var g = JSON.parse(reqGameOnlineData);
                 delete g[this.mySesionId];
                 this.OnlinePlayers = g;
-                console.log(g)
+                // console.log(g)
 
                 for (let key in this.OnlinePlayers) {
                     const GObj = SceneMeneger.scene.getDynamicObjByName(key);
