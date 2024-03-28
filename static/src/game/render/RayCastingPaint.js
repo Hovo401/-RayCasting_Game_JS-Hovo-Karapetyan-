@@ -33,7 +33,7 @@ export default class RayCastingPaint extends RayCatsting {
 
 
         var proekcia = ray.distance;
-        if( this.c?.anti_fisheye_effect ) proekcia *= Math.cos(Math.abs(this.c.rotation.horizon - ray.rayDeltaAngle));
+        if( this.c?.anti_fisheye_effect ) proekcia *= Math.abs( Math.cos(Math.abs(this.c.rotation.horizon - ray.rayDeltaAngle)));
         
         proekcia = this.c.d / proekcia * this.canvas.height / 100
          *(this.canvas.width / this.canvas.height);
