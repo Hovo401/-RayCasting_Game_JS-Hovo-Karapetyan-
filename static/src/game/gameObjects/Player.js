@@ -1,15 +1,28 @@
-import Cub from './Cub.js';
+import Mash from "../components/Mash.js";
+import GameDynamicObject from './ex/GameDynamicObject.js';
 
 import Physics from '../components/Physics.js';
 import SceneMeneger from '../scene/SceneMeneger.js';
 import UserPlayerControl from '../components/UserPlayerControl.js';
 
-export default class Player extends Cub {
+export default class Player extends GameDynamicObject {
     constructor(e) {
         super(e);
         this.name = 'player';
+
+        this.mash = new Mash({GObj: this,
+            mash: [
+                [-5, -5],
+                [10, 0],
+                [-5, 5]
+            ],
+        });
         
-        this.mash.isRendring = false;
+        if(this.mash?.isRendring){
+            this.mash.isRendring =  false;
+        }
+         
+
 
         SceneMeneger.scene.camera.position = this.position;
         SceneMeneger.scene.camera.rotation = this.rotation;

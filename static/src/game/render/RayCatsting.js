@@ -22,7 +22,7 @@ export default class RayCatsting extends Canvas {
 
         SceneMeneger.scene.subObjs.forEach(map => {
             map.forEach(GObj => {
-                if (!GObj.mash?.isRendring) return;
+                if (!GObj.mash?.isRendring || !GObj.mash) return;
 
                 GObj.rindringMetaData = {
                     quantityRaysNum: 0,

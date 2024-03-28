@@ -23,6 +23,12 @@ export default class DownladMeneger {
         const image = new Image();
         this.images[key] = image;
         image.onload = () => {
+            
+            // Просто устанавливаем размеры изображения без рисования
+            // image.width = 512;
+            // image.height = 512;
+            
+
             this.imagesLoaded++;
             if (this.onProgress) {
                 this.onProgress(this.imagesLoaded, this.totalImages);

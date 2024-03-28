@@ -18,8 +18,8 @@ export default class Render extends RayCastingPaint {
         this.canvas.height = window.innerHeight;
 
         // background
-        this.ctx.fillStyle = 'rgb(40,40,40)'; // Цвет заливки
-        this.ctx.fillRect(0, 0, this.canvas.width*2, this.canvas.height);
+        // this.ctx.fillStyle = 'rgb(40,40,40)'; // Цвет заливки
+        // this.ctx.fillRect(0, 0, this.canvas.width*2, this.canvas.height);
 
 
         this.RayCatsting();
@@ -47,18 +47,21 @@ export default class Render extends RayCastingPaint {
         SceneMeneger.scene.subObjs.forEach(map =>{
             map.forEach(GObj=>{
                 
-                var rMash = GObj.mash.RMashPos;
-                this.ctx.beginPath();
-                this.ctx.moveTo(rMash[0][0], rMash[0][1]);//gci skizb bard gceri hmar
-                for (let i = 1; i < GObj.mash.RMashPos.length; i++) {
-                    this.ctx.lineTo(rMash[i][0], rMash[i][1]);//gci sharunakutyun@
+                var rMash = GObj.mash?.RMashPos;
+                if(rMash){
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(rMash[0][0], rMash[0][1]);//gci skizb bard gceri hmar
+                    for (let i = 1; i < GObj.mash.RMashPos.length; i++) {
+                        this.ctx.lineTo(rMash[i][0], rMash[i][1]);//gci sharunakutyun@
+                    }
+                    
+                    // this.ctx.lineTo(this.treds[0],this.treds[1])
+                    
+                    this.ctx.fill();
+                    this.ctx.stroke();//nkarir
+                    this.ctx.beginPath();//gci verg
                 }
-                
-                // this.ctx.lineTo(this.treds[0],this.treds[1])
-                
-                this.ctx.fill();
-                this.ctx.stroke();//nkarir
-                this.ctx.beginPath();//gci verg
+
                 
             })
         })
@@ -72,7 +75,7 @@ export default class Render extends RayCastingPaint {
                 if(!ra ||ra.GObj == null ) return;
                 // console.log(ray[0])
                 
-                this.line(this.c.position.x, this.c.position.y, ra.cord[0], ra.cord[1],'#00ff00',1);
+                // this.line(this.c.position.x, this.c.position.y, ra.cord[0], ra.cord[1],'#00ff00',1);
             // })
             
         })

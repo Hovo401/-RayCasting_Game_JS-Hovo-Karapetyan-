@@ -18,13 +18,18 @@ export default class RayCastingPaint extends RayCatsting {
     for (let i = 0; i < this.rayMatrix.length; ++i) {
       var maxgim = 1;
       var j = 0;
+      
       for (let j = this.rayMatrix[i].length - 1; j >= 0; j--) {
         // for(let j =  0; j < this.rayMatrix[i].length; j++){
-        var ray = this.rayMatrix[i][j]
-        // !GObj.mash?.texturingMetod !== 'segment'
+        if( j >= this.c.MAX_PAINT){
+          continue;
+        }
+        
+        var ray = this.rayMatrix[i][j];
+
         const color = [(Math.log10(ray.distance) * 100)];
 
-        this.ctx.fillStyle = `rgb( ${color[0]}, ${color[0]}, ${color[0]} )`;
+        // this.ctx.fillStyle = `rgb( ${color[0]}, ${color[0]}, ${color[0]} )`;
 
 
         var proekcia = ray.distance;
@@ -33,10 +38,11 @@ export default class RayCastingPaint extends RayCatsting {
          *(this.canvas.width / this.canvas.height);
 
         var xStart = delta * i, 
-          yStart = y_start - proekcia * this.c.position.z,
+          yStart = y_start - proekcia * this.c.position.z + (ray.GObj?.position?.z ?? 0),
           xDelta = delta + 1, 
           yDelta = proekcia
 
+          // console.log(ray?.GObj?.position?.z)
         if (ray?.GObj?.texture) {
           var NumberRays = ray.GObj.rindringMetaData.mashQuantityRaysNum[ray.mashIndex];
 
@@ -60,7 +66,7 @@ export default class RayCastingPaint extends RayCatsting {
 
 
 
-          this.ctx.drawImage(
+          this.drawImage(
             ray.GObj.texture,
             texturWidthCutStart,
             0,
@@ -73,10 +79,12 @@ export default class RayCastingPaint extends RayCatsting {
           );
         }
         else {
-          this.ctx.fillRect(xStart, yStart, xDelta, yDelta);
+          this.fillRect(xStart, yStart, xDelta, yDelta);
         }
       }
     }
+
+    
   }
   segmentPaint(ray) { }
 }
