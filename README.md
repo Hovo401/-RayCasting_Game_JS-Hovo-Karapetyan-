@@ -2,14 +2,17 @@
 
 1. npm i
 2.  npm run start
-    or
+
+or
     npm run dev
 
 
 person control - 
 
 w,a,s,d - run
-+
+
+
 shift  - speed run
+
 
 array - camera
