@@ -1,8 +1,16 @@
 import GAPI from './game/GAPI.js';
 
+// import * as dat_gui from './lib/dat.gui.js';
+
 class App {
   constructor() {
     this.GameLoop = new GAPI.GameLoop();
+
+    const gui = new dat.GUI();
+    const camera = gui.addFolder('Camera');
+    camera.add(GAPI.SceneMeneger.scene.camera, 'FOVDeg').min(20).max(360).name('Field of View (FOV)');
+    camera.add(GAPI.SceneMeneger.scene.camera, 'anti_fisheye_effect').name('Anti Fisheye Effect');
+    camera.add(GAPI.SceneMeneger.scene.camera, 'NUM_RAYS').min(10).max(window.innerWidth);
   }
   start() {
 

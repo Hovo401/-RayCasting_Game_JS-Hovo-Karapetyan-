@@ -10,3 +10,8 @@ body{
 canvas{
     position: fixed;
 }
+
+.dg .main {
+    position: absolute;
+    right: 50px;
+}
