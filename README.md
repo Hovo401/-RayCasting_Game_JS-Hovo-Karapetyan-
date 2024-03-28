@@ -1,18 +1,15 @@
-## progect start command -
+## commands to start the project -
 
 1. npm i
-2.  npm run start
-
-or
-    npm run dev
-
-
-person control - 
-
-w,a,s,d - run
+2.  npm run start  
+  or  
+npm run dev
 
 
-shift  - speed run
+## game character control - 
 
+w,a,s,d - walking
 
-array - camera
+shift  - runing
+
+arrows - camera
