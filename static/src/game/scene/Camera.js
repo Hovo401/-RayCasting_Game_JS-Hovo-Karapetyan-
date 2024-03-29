@@ -9,6 +9,8 @@ export default class Camera {
       this.MAX_DEPT = 2000;
       this.DELTA_ANGLE = this.FOV / this.NUM_RAYS;
       this.d = 700 / (2 * Math.tan(this.HALF_FOV / 2));
+
+      
       
       this._FOVDeg = 90;
       this.MAX_PAINT = Infinity;

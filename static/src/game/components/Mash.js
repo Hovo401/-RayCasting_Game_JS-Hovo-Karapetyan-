@@ -6,6 +6,7 @@ export default class Mash extends Component{
         super(e);
         this.name = 'mash';
         this.mash = e.mash;
+        this.mashHeight = 300;
         this.RMashPos = structuredClone(e.mash);
 
         this.RFullMashRanges = 0;

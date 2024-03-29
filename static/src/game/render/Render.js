@@ -75,7 +75,7 @@ export default class Render extends RayCastingPaint {
                 if(!ra ||ra.GObj == null ) return;
                 // console.log(ray[0])
                 
-                // this.line(this.c.position.x, this.c.position.y, ra.cord[0], ra.cord[1],'#00ff00',1);
+                this.line(this.c.position.x, this.c.position.y, ra.cord[0], ra.cord[1],'#00ff00',1);
             // })
             
         })

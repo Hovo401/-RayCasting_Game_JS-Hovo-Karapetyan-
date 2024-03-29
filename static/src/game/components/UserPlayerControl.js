@@ -15,9 +15,9 @@ export default class UserPlayerControl extends Component{
         if(!this.getUseComponent('physics')) throw new Error('useComponent (physics:Physics) = undefined');
     }
     upDate(){
-        if(this.GObj.position.z > 0.3){
+        if(this.GObj.position.z > 0){
             this.getUseComponent('physics').isDown = false;
-            this.GObj.position.z = 0.3;
+            this.GObj.position.z = 0;
         }else{
             this.getUseComponent('physics').startDown()
         }
@@ -74,7 +74,7 @@ export default class UserPlayerControl extends Component{
         }
 
         if (this.keyManager.isDown('Space')) {
-            if(this.GObj.position.z >= 0.2){
+            if(this.GObj.position.z >= -0.2){
                 this.getUseComponent('physics').impulse.z = -1;
             }
         }

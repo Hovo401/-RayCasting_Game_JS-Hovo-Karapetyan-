@@ -8,7 +8,7 @@ export default class MapCreator {
         const e1 = e0[i1];
         if (e1 == ' ') continue;
         SceneMeneger.scene.addObject(new Cub({
-          position: {x: i1 * 20, y: i0 * 20, z: 10},
+          position: {x: i1 * 20, y: i0 * 20, z: 0},
           name: '' + Math.random(),
           texture: textureList[e1]
         }))

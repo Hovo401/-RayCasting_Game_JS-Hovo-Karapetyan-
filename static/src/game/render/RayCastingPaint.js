@@ -39,7 +39,8 @@ export default class RayCastingPaint extends RayCatsting {
          *(this.canvas.width / this.canvas.height);
 
         var xStart = delta * i, 
-          yStart = y_start - proekcia * this.c.position.z + (ray.GObj?.position?.z ?? 0),
+          // yStart = y_start - proekcia * this.c.position.z //+ (ray.GObj?.position?.z ?? 0),
+          yStart = y_start - proekcia * (this.c.position.z + 0.2) +  (ray.GObj?.position?.z ?? 1) * proekcia,
           xDelta = delta + 1, 
           yDelta = proekcia
 
