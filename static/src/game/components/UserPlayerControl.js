@@ -23,27 +23,30 @@ export default class UserPlayerControl extends Component{
         }
         
         // Изменяем координаты в зависимости от нажатой клавиши
-
+        var vector2 = {x:0,y:0}
         if (this.keyManager.isDown('KeyW')) {
-            this.getUseComponent('physics').impulse.x =  Math.cos(this.GObj.rotationHorizon) *this.this_speed;
-            this.getUseComponent('physics').impulse.y =  Math.sin(this.GObj.rotationHorizon) *this.this_speed;
+            vector2.x +=  Math.cos(this.GObj.rotationHorizon) *this.this_speed;
+            vector2.y +=  Math.sin(this.GObj.rotationHorizon) *this.this_speed;
             // this.GObj.run(this.GObj.positionX + Math.cos(this.GObj.rotationHorizon) *this.this_speed, this.GObj.positionY + Math.sin(this.GObj.rotationHorizon) *this.this_speed);
         } 
-        else if (this.keyManager.isDown('KeyS')) {
-            this.getUseComponent('physics').impulse.x = -( Math.cos(this.GObj.rotationHorizon) *this.this_speed);
-            this.getUseComponent('physics').impulse.y = -( Math.sin(this.GObj.rotationHorizon) *this.this_speed);
+        if (this.keyManager.isDown('KeyS')) {
+            vector2.x += -( Math.cos(this.GObj.rotationHorizon) *this.this_speed);
+            vector2.y += -( Math.sin(this.GObj.rotationHorizon) *this.this_speed);
             // this.GObj.run(this.GObj.positionX + Math.cos(this.GObj.rotationHorizon) *-this.this_speed, this.GObj.positionY + Math.sin(this.GObj.rotationHorizon) *-this.this_speed);
         }
         if (this.keyManager.isDown('KeyA')) {
-            this.getUseComponent('physics').impulse.x = ( Math.sin(this.GObj.rotationHorizon) *this.this_speed); 
-            this.getUseComponent('physics').impulse.y = -( Math.cos(this.GObj.rotationHorizon) *this.this_speed);
+            vector2.x += ( Math.sin(this.GObj.rotationHorizon) *this.this_speed); 
+            vector2.y += -( Math.cos(this.GObj.rotationHorizon) *this.this_speed);
             // this.GObj.run(this.GObj.positionX + Math.sin(this.GObj.rotationHorizon) *this.this_speed, this.GObj.positionY + Math.cos(this.GObj.rotationHorizon) *-this.this_speed);
         } 
-        else if (this.keyManager.isDown('KeyD')) {
-            this.getUseComponent('physics').impulse.x = -( Math.sin(this.GObj.rotationHorizon) *this.this_speed); 
-            this.getUseComponent('physics').impulse.y = ( Math.cos(this.GObj.rotationHorizon) *this.this_speed);
+        if (this.keyManager.isDown('KeyD')) {
+            vector2.x += -( Math.sin(this.GObj.rotationHorizon) *this.this_speed); 
+            vector2.y += ( Math.cos(this.GObj.rotationHorizon) *this.this_speed);
             // this.GObj.run(this.GObj.positionX + Math.sin(this.GObj.rotationHorizon) *-this.this_speed, this.GObj.positionY + Math.cos(this.GObj.rotationHorizon) *this.this_speed);
         }
+        this.getUseComponent('physics').impulse.x = vector2.x ;
+        this.getUseComponent('physics').impulse.y = vector2.y;
+        
 
         if (this.keyManager.isDown('ArrowLeft')) {
             this.GObj.rotationHorizon -= 3 * this.GObj.Time.deltaTime ;

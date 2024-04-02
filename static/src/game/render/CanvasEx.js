@@ -17,6 +17,7 @@ export default class CanvasEl{
         this.ctx.lineWidth = width;
         this.ctx.stroke();
     }
+    
 
     shrjan(x,y,radius){
         this.ctx.beginPath();
@@ -35,4 +36,3 @@ export default class CanvasEl{
         this.ctx.fillRect(x, y, width, height);
     }   
 }
-

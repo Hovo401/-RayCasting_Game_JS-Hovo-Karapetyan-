@@ -5,18 +5,18 @@ export default class Camera {
   
       this._FOV = Math.PI / 2;
       this.HALF_FOV = this.FOV / 2;
-      this._NUM_RAYS = 300;
+      this._NUM_RAYS = 400;
       this.MAX_DEPT = 2000;
       this.DELTA_ANGLE = this.FOV / this.NUM_RAYS;
       this.d = 700 / (2 * Math.tan(this.HALF_FOV / 2));
-
-      
       
       this._FOVDeg = 90;
-      this.MAX_PAINT = Infinity;
+      this.MAX_PAINT = 3;
 
       this.anti_fisheye_effect = true;
     }
+
+
     set FOV(value){
       this._FOV = value;
       this.HALF_FOV = this.FOV / 2;
@@ -25,9 +25,10 @@ export default class Camera {
       ? 700 / (2 * Math.tan(this.HALF_FOV / 2)) 
       : 700 / (2 * Math.tan(Math.PI * 1.5/ 4))
        ;
-      console.log(value)
+       
       // this.d = 900 / (2 * Math.tan(.5));
     }
+
     get FOV(){
       return this._FOV;
     }

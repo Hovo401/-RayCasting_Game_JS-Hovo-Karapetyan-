@@ -36,9 +36,7 @@ export default class GameLoop { // singleton
     }
 
     upDate() {
-        requestAnimationFrame(this.upDate.bind(this));
-        // setTimeout(this.upDate.bind(this), 0);
-        if (!this.isPlay) return;
+        
         this.onlineSocketController.reqGameUserDate();
 
         SceneMeneger.scene.dynamicObj.forEach((e)=>{
@@ -48,5 +46,9 @@ export default class GameLoop { // singleton
         this.render.upDate();
         
         Time.update();
+
+        requestAnimationFrame(this.upDate.bind(this));
+        // setTimeout(this.upDate.bind(this), 0);
+        if (!this.isPlay) return;
     }
 }

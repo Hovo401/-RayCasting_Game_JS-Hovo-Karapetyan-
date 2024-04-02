@@ -39,16 +39,7 @@ class App {
         speedDeg: -4,
       })))
 
-      GAPI.SceneMeneger.scene.addObject(
-        new GAPI.GObjs.SharIsMash({
-          position: { x: 90, y: 90, z: -0.5 },
-          rotation: { horizon: 0, vertical: 1 },
-          MashQuantity: 80,
-          radius: 10,
-          name:'a8',
-          texturingMetod:'full',
-          texture: GAPI.SceneMeneger.images.crown,
-        }))
+      
 
         GAPI.SceneMeneger.scene.addObject(
           new GAPI.GObjs.SharIsMash({
@@ -61,6 +52,16 @@ class App {
             texture: GAPI.SceneMeneger.images.crown,
           }))
 
+          GAPI.SceneMeneger.scene.addObject(
+            new GAPI.GObjs.SharIsMash({
+              position: { x: 90, y: 90, z: -0.5 },
+              rotation: { horizon: 0, vertical: 1 },
+              MashQuantity: 80,
+              radius: 10,
+              name:'a8',
+              texturingMetod:'full',
+              texture: GAPI.SceneMeneger.images.crown,
+            }))
 
     GAPI.SceneMeneger.scene.addObject(
       new GAPI.GObjs.SharIsMash({
