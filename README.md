@@ -13,7 +13,3 @@ w,a,s,d - walking
 shift  - runing
 
 arrows - camera
-
-## URL of this project
-
-http://ec2-44-212-66-171.compute-1.amazonaws.com/
