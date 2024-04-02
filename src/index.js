@@ -1,6 +1,10 @@
 import express from 'express';
 import { Server } from 'socket.io';
 import { createServer } from 'http';
+import dotenv from 'dotenv';
+
+dotenv.config();
+const PORT = process.env.PORT || 3000;
 
 import GameOnline from './GameOnline.js';
 
@@ -14,7 +18,6 @@ const gameOnline = new GameOnline(io);
 
 
 
-const port = 3000;
-server.listen(3000, () => {
-  console.log(`server running at port - ${port}`);
+server.listen(PORT, () => {
+  console.log(`server running at port - ${PORT}`);
 });
