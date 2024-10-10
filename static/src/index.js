@@ -32,49 +32,49 @@ class App {
         rotation: { horizon: 0, vertical: 1 },
         MashQuantity: 80,
         radius: 10,
-        name:'a1',
-        texturingMetod:'segment',
+        name: 'a1',
+        texturingMetod: 'segment',
         texture: GAPI.SceneMeneger.images.Wall_1x1_5,
       }).addComponent(new GAPI.comps.Rotating({
         speedDeg: -4,
       })))
 
-      
 
-        GAPI.SceneMeneger.scene.addObject(
-          new GAPI.GObjs.SharIsMash({
-            position: { x: 90, y: 90, z: 0 },
-            rotation: { horizon: 0, vertical: 1 },
-            MashQuantity: 80,
-            radius: 10,
-            name:'a9',
-            texturingMetod:'full',
-            texture: GAPI.SceneMeneger.images.crown,
-          }))
-
-          GAPI.SceneMeneger.scene.addObject(
-            new GAPI.GObjs.SharIsMash({
-              position: { x: 90, y: 90, z: -0.5 },
-              rotation: { horizon: 0, vertical: 1 },
-              MashQuantity: 80,
-              radius: 10,
-              name:'a8',
-              texturingMetod:'full',
-              texture: GAPI.SceneMeneger.images.crown,
-            }))
 
     GAPI.SceneMeneger.scene.addObject(
       new GAPI.GObjs.SharIsMash({
-        position: { x: 100, y: 100, z: 0 },
+        position: { x: 90, y: 90, z: 0 },
         rotation: { horizon: 0, vertical: 1 },
-        MashQuantity: 30,
-        radius: 5,
-        name:'a2',
+        MashQuantity: 80,
+        radius: 10,
+        name: 'a9',
+        texturingMetod: 'full',
         texture: GAPI.SceneMeneger.images.crown,
-        texturingMetod:'full',
-      }).addComponent(new GAPI.comps.Rotating({
-        speedDeg: 40,
-      })))
+      }))
+
+    GAPI.SceneMeneger.scene.addObject(
+      new GAPI.GObjs.SharIsMash({
+        position: { x: 90, y: 90, z: -0.5 },
+        rotation: { horizon: 0, vertical: 1 },
+        MashQuantity: 80,
+        radius: 10,
+        name: 'a8',
+        texturingMetod: 'full',
+        texture: GAPI.SceneMeneger.images.crown,
+      }))
+
+    // GAPI.SceneMeneger.scene.addObject(
+    //   new GAPI.GObjs.SharIsMash({
+    //     position: { x: 100, y: 100, z: 0 },
+    //     rotation: { horizon: 0, vertical: 1 },
+    //     MashQuantity: 30,
+    //     radius: 5,
+    //     name: 'a2',
+    //     texture: GAPI.SceneMeneger.images.crown,
+    //     texturingMetod: 'full',
+    //   }).addComponent(new GAPI.comps.Rotating({
+    //     speedDeg: 40,
+    //   })))
 
 
     // .addComponent(new GAPI.comps.Rotating()));
@@ -93,7 +93,7 @@ class App {
         '4': GAPI.SceneMeneger.images.Wall_1x1_4,
         '5': GAPI.SceneMeneger.images.crown,
         '6': GAPI.SceneMeneger.images.crown,
-        '7': GAPI.SceneMeneger.images.start1_gray_fon,
+        '7': GAPI.SceneMeneger.images.Wall_1x1_5,
       },
 
     );

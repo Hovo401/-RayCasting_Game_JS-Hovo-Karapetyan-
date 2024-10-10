@@ -6,45 +6,45 @@ import OnlineSocketController from '../moduls/OnlineSocketController.js';
 
 export default class GameLoop { // singleton
     constructor() {
-        if(GameLoop.ex){
+        if (GameLoop.ex) {
             return GameLoop.ex;
         }
         GameLoop.ex = this;
-        
+
         this.onlineSocketController = null;
         this.isPlay = true;
         this.DownladMeneger = new DownladMeneger();
         this.render = new Render({ player: this.player });
     }
 
-    async start(){
-        SceneMeneger.scene.dynamicObj.forEach((e)=>{
+    async start() {
+        SceneMeneger.scene.dynamicObj.forEach((e) => {
             e.start();
         });
         this.onlineSocketController = new OnlineSocketController();
-        this.DownladMeneger.onProgress = (imagesLoaded, totalImages)=>{
+        this.DownladMeneger.onProgress = (imagesLoaded, totalImages) => {
             // console.log(imagesLoaded, totalImages);
         }
-        
-        this.DownladMeneger.onComplete = ()=>{
-            
+
+        this.DownladMeneger.onComplete = () => {
+
             this.upDate();
-            
+
         }
-        
-        
+
+
     }
 
     upDate() {
-        
+
         this.onlineSocketController.reqGameUserDate();
 
-        SceneMeneger.scene.dynamicObj.forEach((e)=>{
+        SceneMeneger.scene.dynamicObj.forEach((e) => {
             e.upDate();
         });
 
         this.render.upDate();
-        
+
         Time.update();
 
         requestAnimationFrame(this.upDate.bind(this));

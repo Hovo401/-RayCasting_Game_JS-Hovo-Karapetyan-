@@ -2,16 +2,16 @@ export default class Camera {
     constructor({position, rotation}) {
       this.position = position;
       this.rotation = rotation;
-  
+      
       this._FOV = Math.PI / 2;
       this.HALF_FOV = this.FOV / 2;
-      this._NUM_RAYS = 400;
+      this._NUM_RAYS = 90;
       this.MAX_DEPT = 2000;
       this.DELTA_ANGLE = this.FOV / this.NUM_RAYS;
       this.d = 700 / (2 * Math.tan(this.HALF_FOV / 2));
       
       this._FOVDeg = 90;
-      this.MAX_PAINT = 3;
+      this.MAX_PAINT = Infinity;
 
       this.anti_fisheye_effect = true;
     }

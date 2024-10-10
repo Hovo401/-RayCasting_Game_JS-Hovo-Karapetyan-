@@ -1,5 +1,7 @@
 import Cub from '../gameObjects/Cub.js';
 import SceneMeneger from '../scene/SceneMeneger.js';
+import Component from '../components/ex/Component.js';
+
 
 export default class MapCreator {
   static addMatrixSpamMap(matrix, textureList) {
@@ -7,8 +9,9 @@ export default class MapCreator {
       for (let i1 = 0; i1 < e0.length; i1++) {
         const e1 = e0[i1];
         if (e1 == ' ') continue;
+
         SceneMeneger.scene.addObject(new Cub({
-          position: {x: i1 * 20, y: i0 * 20, z: 0},
+          position: { x: i1 * 20, y: i0 * 20, z: Math.random() * -1 },
           name: '' + Math.random(),
           texture: textureList[e1]
         }))

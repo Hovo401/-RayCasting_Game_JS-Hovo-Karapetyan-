@@ -10,18 +10,19 @@ export default class Player extends GameDynamicObject {
         super(e);
         this.name = 'player';
 
-        this.mash = new Mash({GObj: this,
+        this.mash = new Mash({
+            GObj: this,
             mash: [
                 [-5, -5],
                 [10, 0],
                 [-5, 5]
             ],
         });
-        
-        if(this.mash?.isRendring){
-            this.mash.isRendring =  false;
+
+        if (this.mash?.isRendring) {
+            this.mash.isRendring = false;
         }
-         
+
 
 
         SceneMeneger.scene.camera.position = this.position;
@@ -32,7 +33,7 @@ export default class Player extends GameDynamicObject {
         );
         this.addComponent(
             new UserPlayerControl()
-            .addUseComponent(this.getComponent('physics'))
+                .addUseComponent(this.getComponent('physics'))
         );
     }
 }

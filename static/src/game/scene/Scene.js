@@ -7,36 +7,36 @@ export default class Scene {
         this.subObjs = [this.staticObj, this.dynamicObj];
         this.camera = new Camera({
             position: { x: 25, y: 25, z: 0 },
-            rotation: { horizon: 0, vertical: 0 }
+            rotation: { horizon: 1, vertical: 1 }
         });
     }
 
-    getDynamicObjByName(name){
+    getDynamicObjByName(name) {
         return this.dynamicObj.get(name);
     }
 
     addObject(obj, statice = false) {
-        if(statice){
+        if (statice) {
             this.staticObj.set(obj.name, obj);
-        }else{
-            
+        } else {
+
             this.dynamicObj.set(obj.name, obj);
         }
         return this.dynamicObj.get(obj.name);
     }
 
     addObjectArray(objs, statice = false) {
-        if(statice){
-            objs.forEach( obj => {
+        if (statice) {
+            objs.forEach(obj => {
                 this.staticObj.set(obj.name, obj);
             });
-        }else{
-            objs.forEach( obj => {
+        } else {
+            objs.forEach(obj => {
                 this.dynamicObj.set(obj.name, obj);
             });
         }
     }
-    delDynamicObjectByName(name){
+    delDynamicObjectByName(name) {
         this.dynamicObj.delete(name)
     }
 }

@@ -14,7 +14,7 @@ export default class OnlineSocketController {
         this.mySesionId = '';
 
         this.OnlinePlayers = {};
-        
+
         socket.on('connect', () => {
             this.mySesionId = socket.id;
             console.log('Мой идентификатор сессии:', this.mySesionId);
@@ -35,25 +35,25 @@ export default class OnlineSocketController {
                     } else {
                         GAPI.SceneMeneger.scene.addObject(
                             new GAPI.GObjs.SharIsMash({
-                                position: { x: 150, y: 100, z:  0},
+                                position: { x: 150, y: 100, z: 0 },
                                 rotation: { horizon: 0, vertical: 1 },
                                 MashQuantity: 30,
                                 radius: 4,
                                 name: key,
                                 texturingMetod: 'full',
-                                texture: GAPI.SceneMeneger.images.crown,
+                                texture: GAPI.SceneMeneger.images.Wall_1x1_5,
                             }));
                     }
                 }
             })
 
             socket.on('userDisconect', (iderId) => {
-            
+
                 GAPI.SceneMeneger.scene.delDynamicObjectByName(iderId);
-                console.log('userd disqonect',iderId)
+                console.log('userd disqonect', iderId)
             })
         });
-        
+
 
     }
     reqGameUserDate() {
@@ -64,6 +64,6 @@ export default class OnlineSocketController {
             })
         );
 
-        
+
     }
 }
