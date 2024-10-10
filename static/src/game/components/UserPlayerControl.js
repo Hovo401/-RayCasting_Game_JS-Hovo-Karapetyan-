@@ -7,7 +7,7 @@ export default class UserPlayerControl extends Component {
         this.name = 'userPlayerControl';
         this.keyManager = new keyManager();
 
-        this.this_speed = 3;
+        this.this_speed = 1;
         this.step_speed = 3;
         this.run_speed = 10;
 
@@ -67,9 +67,9 @@ export default class UserPlayerControl extends Component {
     }
 
     upDate() {
-        if (this.GObj.position.z > this.pol) {
+        if (this.GObj.position.z <= this.pol + 1.8) {
             this.getUseComponent('physics').isDown = false;
-            this.GObj.position.z = this.pol;
+            this.GObj.position.z = this.pol + 1.8;
         } else {
             this.getUseComponent('physics').startDown()
         }
@@ -137,8 +137,8 @@ export default class UserPlayerControl extends Component {
         }
 
         if (this.keyManager.isDown('Space')) {
-            if (this.GObj.position.z >= -0.2) {
-                this.getUseComponent('physics').impulse.z = -1;
+            if (this.GObj.position.z >= 0) {
+                this.getUseComponent('physics').impulse.z = 1;
             }
         }
 

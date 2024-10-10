@@ -12,10 +12,11 @@ export default class Player extends GameDynamicObject {
 
         this.mash = new Mash({
             GObj: this,
+            mashHeight: 1.8,
             mash: [
-                [-5, -5],
-                [10, 0],
-                [-5, 5]
+                [-.5, -.5],
+                [1, 0],
+                [-.5, .5]
             ],
         });
 
@@ -29,7 +30,7 @@ export default class Player extends GameDynamicObject {
         SceneMeneger.scene.camera.rotation = this.rotation;
 
         this.addComponent(
-            new Physics({ mass: 80 }), 'physics'
+            new Physics({ mass: 90 }), 'physics'
         );
         this.addComponent(
             new UserPlayerControl()

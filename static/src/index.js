@@ -23,12 +23,13 @@ class App {
       { key: 'Wall_1x1_3', src: './img/texture/Wall_1x1_3.png' },
       { key: 'Wall_1x1_4', src: './img/texture/Wall_1x1_4.png' },
       { key: 'Wall_1x1_5', src: './img/texture/person_j_1.png' },
+      { key: 'neba', src: './img/texture/neba4.jpg' },
     ]);
 
 
     GAPI.SceneMeneger.scene.addObject(
       new GAPI.GObjs.SharIsMash({
-        position: { x: 150, y: 100, z: 0 },
+        position: { x: 150, y: 100, z: 1.5 },
         rotation: { horizon: 0, vertical: 1 },
         MashQuantity: 80,
         radius: 10,
@@ -41,26 +42,18 @@ class App {
 
 
 
-    GAPI.SceneMeneger.scene.addObject(
-      new GAPI.GObjs.SharIsMash({
-        position: { x: 90, y: 90, z: 0 },
-        rotation: { horizon: 0, vertical: 1 },
-        MashQuantity: 80,
-        radius: 10,
-        name: 'a9',
-        texturingMetod: 'full',
-        texture: GAPI.SceneMeneger.images.crown,
-      }))
+
 
     GAPI.SceneMeneger.scene.addObject(
       new GAPI.GObjs.SharIsMash({
-        position: { x: 90, y: 90, z: -0.5 },
+        position: { x: 0, y: 0, z: 1100 },
+        mashHeight: 1100,
         rotation: { horizon: 0, vertical: 1 },
         MashQuantity: 80,
-        radius: 10,
+        radius: 1500,
         name: 'a8',
         texturingMetod: 'full',
-        texture: GAPI.SceneMeneger.images.crown,
+        texture: GAPI.SceneMeneger.images.neba,
       }))
 
     // GAPI.SceneMeneger.scene.addObject(
@@ -80,7 +73,7 @@ class App {
     // .addComponent(new GAPI.comps.Rotating()));
 
     GAPI.SceneMeneger.scene.addObject(new GAPI.GObjs.Player({
-      position: { x: 25, y: 25, z: 0 },
+      position: { x: 25, y: 25, z: 1.8 },
       rotation: { horizon: 1, vertical: 1 }
     }));
     console.log(GAPI.SceneMeneger.images.crown)

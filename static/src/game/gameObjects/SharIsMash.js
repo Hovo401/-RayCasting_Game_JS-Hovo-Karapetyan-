@@ -5,15 +5,17 @@ export default class SharIsMash extends GameDynamicObject {
     constructor(e) {
         super(e);
         this.name = this.name = e?.name ?? 'share';
-        this.mash = new Mash({GObj: this,
-            mash:this.generateCircleCoordinates(0, 0, e?.radius ?? 8, e?.MashQuantity ?? 30),
+        this.mash = new Mash({
+            GObj: this,
+            mashHeight: e?.mashHeight ?? 2,
+            mash: this.generateCircleCoordinates(0, 0, e?.radius ?? 8, e?.MashQuantity ?? 30),
             texturingMetod: e?.texturingMetod ?? 'full',
         });
     }
     generateCircleCoordinates(centerX, centerY, radius, numPoints) {
         var coordinates = [];
         var angleIncrement = (2 * Math.PI) / numPoints;
-        
+
         for (var i = 0; i < numPoints; i++) {
             var angle = i * angleIncrement;
             var x = centerX + radius * Math.cos(angle);

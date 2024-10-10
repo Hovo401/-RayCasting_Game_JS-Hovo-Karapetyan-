@@ -11,7 +11,8 @@ export default class MapCreator {
         if (e1 == ' ') continue;
 
         SceneMeneger.scene.addObject(new Cub({
-          position: { x: i1 * 20, y: i0 * 20, z: Math.random() * -1 },
+          position: { x: i1 * 2, y: i0 * 2, z: 2 },
+          mashHeight: 2,
           name: '' + Math.random(),
           texture: textureList[e1]
         }))

@@ -18,33 +18,34 @@ export default class RayCastingPaint extends RayCatsting {
     for (let i = 0; i < this.rayMatrix.length; ++i) {
       var maxgim = 1;
       var j = 0;
-      
+
       for (let j = this.rayMatrix[i].length - 1; j >= 0; j--) {
         // for(let j =  0; j < this.rayMatrix[i].length; j++){
-        if( j >= this.c.MAX_PAINT){
+        if (j >= this.c.MAX_PAINT) {
           continue;
         }
-        
+
         var ray = this.rayMatrix[i][j];
 
-        const color = [(Math.log10(ray.distance) * 100)];
+        // const color = [(Math.log10(ray.distance) * 100)];
 
         // this.ctx.fillStyle = `rgb( ${color[0]}, ${color[0]}, ${color[0]} )`;
 
 
         var proekcia = ray.distance;
-        if( this.c?.anti_fisheye_effect ) proekcia *= Math.abs( Math.cos(Math.abs(this.c.rotation.horizon - ray.rayDeltaAngle)));
-        
-        proekcia = this.c.d / proekcia * this.canvas.height / 100
-         *(this.canvas.width / this.canvas.height);
+        if (this.c?.anti_fisheye_effect) proekcia *= Math.abs(Math.cos(Math.abs(this.c.rotation.horizon - ray.rayDeltaAngle)));
 
-        var xStart = delta * i, 
+        proekcia = this.c.d / proekcia
+          * (this.canvas.width / this.canvas.height) / 2.25;
+
+        var xStart = delta * i,
           // yStart = y_start - proekcia * this.c.position.z //+ (ray.GObj?.position?.z ?? 0),
-          yStart = y_start - proekcia * (this.c.position.z + 0.2) +  (ray.GObj?.position?.z ?? 1) * proekcia,
-          xDelta = delta + 1, 
-          yDelta = proekcia
+          yStart = y_start + proekcia * (this.c.position.z) - (ray.GObj?.position?.z ?? 0) * proekcia,
+          xDelta = delta + 1,
+          yDelta = ray.GObj?.mash?.mashHeight * proekcia;
 
-          // console.log(ray?.GObj?.position?.z)
+
+        // console.log(ray?.GObj?.position?.z)
         if (ray?.GObj?.texture) {
           var NumberRays = ray.GObj.rindringMetaData.mashQuantityRaysNum[ray.mashIndex];
 
@@ -86,7 +87,7 @@ export default class RayCastingPaint extends RayCatsting {
       }
     }
 
-    
+
   }
   segmentPaint(ray) { }
 }

@@ -29,6 +29,7 @@ export default class OnlineSocketController {
                     const GObj = SceneMeneger.scene.getDynamicObjByName(key);
                     if (GObj) {
                         GObj.position = this.OnlinePlayers[key].data.position;
+                        GObj.position.z += .6;
                         GObj.rotation = this.OnlinePlayers[key].data.rotation;
                         GObj.rotationHorizon += Math.PI;
                         GObj.onlineGame = true;
@@ -36,9 +37,10 @@ export default class OnlineSocketController {
                         GAPI.SceneMeneger.scene.addObject(
                             new GAPI.GObjs.SharIsMash({
                                 position: { x: 150, y: 100, z: 0 },
+                                mashHeight: 2.4,
                                 rotation: { horizon: 0, vertical: 1 },
                                 MashQuantity: 30,
-                                radius: 4,
+                                radius: .6,
                                 name: key,
                                 texturingMetod: 'full',
                                 texture: GAPI.SceneMeneger.images.Wall_1x1_5,
