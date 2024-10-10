@@ -12,7 +12,7 @@ export default class Player extends GameDynamicObject {
 
         this.mash = new Mash({
             GObj: this,
-            mashHeight: 1.8,
+            mashHeight: 1.7,
             mash: [
                 [-.5, -.5],
                 [1, 0],

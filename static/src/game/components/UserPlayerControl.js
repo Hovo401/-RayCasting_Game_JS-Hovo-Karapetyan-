@@ -8,8 +8,8 @@ export default class UserPlayerControl extends Component {
         this.keyManager = new keyManager();
 
         this.this_speed = 1;
-        this.step_speed = 3;
-        this.run_speed = 10;
+        this.step_speed = 1;
+        this.run_speed = 8;
 
         this.CameraSpeed = 0.5;
         this.pol = 0;
@@ -67,9 +67,9 @@ export default class UserPlayerControl extends Component {
     }
 
     upDate() {
-        if (this.GObj.position.z <= this.pol + 1.8) {
+        if (this.GObj.position.z <= this.pol + 1.5) {
             this.getUseComponent('physics').isDown = false;
-            this.GObj.position.z = this.pol + 1.8;
+            this.GObj.position.z = this.pol + 1.5;
         } else {
             this.getUseComponent('physics').startDown()
         }

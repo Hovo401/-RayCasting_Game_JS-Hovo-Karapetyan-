@@ -9,9 +9,9 @@ export default class RayCastingPaint extends RayCatsting {
   PaintUpDate() {
     var y_start = this.canvas.height / 2 * this.c.rotation.vertical;
 
-    this.ctx.fillStyle = '#4990BB';
+    this.ctx.fillStyle = '#3D5A78';
     this.ctx.fillRect(0, 0, this.canvas.width, y_start);
-    this.ctx.fillStyle = '#7F6548';
+    this.ctx.fillStyle = '#5E633E';
     this.ctx.fillRect(0, y_start, this.canvas.width, this.canvas.height);
 
     const delta = this.canvas.width / this.c.NUM_RAYS;
